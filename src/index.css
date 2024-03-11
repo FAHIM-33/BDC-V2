@@ -1,0 +1,194 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,400;0,500;0,600;0,700;0,800;1,300&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --primary: rgb(255, 0, 0); 
+    --second: rgb(30, 180, 0);
+    --low: rgb(51, 51, 51);
+    --mid: rgb(33, 33, 33);
+    --high: rgb(18, 18, 18);
+    --background: rgb(245, 245, 245);
+    --fadegray: #8f8f8f2d;
+    color-scheme: light; 
+}
+
+:root[data-theme="dark"] {
+    --second: rgb(136, 255, 0);
+    --low: rgb(120, 120, 120);
+    --mid: rgb(190, 190, 190);
+    --high: rgb(235, 235, 235);
+    --background: rgb(8, 8, 8);
+    color-scheme: dark;
+}
+.test{
+    color: #17fa17;
+}
+
+body {
+    min-height: 100vh;
+    background-color: var(--background);
+    color: var(--high);
+    font-family: 'Poppins', sans-serif;
+    /* background: #2bff00; */
+}
+
+img {
+    object-fit: contain;
+}
+
+.navbar {
+    transition: transform 0.3s;
+}
+
+.gone {
+    transform: translateY(-100%);
+}
+
+.cont {
+    max-width: 1280px;
+    margin: 0rem auto;
+    padding: 3rem 0 1rem;
+
+}
+
+.btn {
+    transition: all 0.2s;
+}
+
+.btn:hover {
+    scale: 1.02;
+    box-shadow: 0px 0px 10px 0px var(--high);
+}
+
+.btn:active {
+    scale: 0.98;
+    box-shadow: none;
+}
+
+
+nav a:not(.logger) {
+    border-radius: 5px;
+    padding: 2px 8px;
+    color: white;
+    font-weight: 500;
+    transition: all 0.2s;
+}
+
+nav a:hover:not(.login):not(.active) {
+    color: var(--primary);
+}
+
+.active {
+    background-color: var(--primary);
+    color: white;
+}
+
+.sidebar {
+    background-color: var(--low);
+}
+
+.sidebar .active {
+    background-color: var(--primary);
+    color: white;
+}
+
+.sidebar a {
+    padding: 0.5rem 1rem;
+    color: var(--background);
+    font-weight: 600;
+    transition: all 0.2s;
+}
+
+.sidebar a:hover {
+    background-color: var(--mid);
+}
+
+button {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    justify-content: center;
+}
+
+.loader {
+    border: 5px solid transparent;
+    border-top: 5px solid var(--primary);
+    border-bottom: 5px solid var(--mid);
+    margin: auto;
+    height: 4rem;
+    width: 4rem;
+    border-radius: 50%;
+    animation: spin infinite 1s;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+label {
+    font-size: 1.2rem;
+}
+
+input,
+textarea {
+    background-color: #8f8f8f2d;
+    border-radius: 6px;
+    width: 100%;
+    padding: 1rem;
+    outline: none;
+    transition: all 0.2s;
+}
+
+input:focus:not(.inModal),
+textarea:focus {
+    outline: 2px solid var(--second);
+}
+
+table {
+    min-width: 100%;
+    text-align: center;
+}
+
+tr {
+    border: 1px solid var(--fadegray);
+    padding: 0 2px;
+}
+th{
+    padding: 0.5rem;
+}
+
+.custom-toast {
+    background-color: var(--high);
+    color: var(--low);
+}
+
+.swal2-modal{
+    background-color: var(--background);
+    border: 2px solid var(--low);
+    color: var(--high);
+}
+
+.selectedPage{
+    background-color: var(--primary);
+    padding: 0.5rem;
+    border-radius: 5px;
+}
+.pagination-container button{
+    padding: 0.5rem;
+}
+
+.brr {
+    border: 1px solid lime;
+}
+
+.brb {
+    border: 1px soid blue;
+}

@@ -1,0 +1,16 @@
+.card-container {
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.card {
+    text-align: center;
+    border: 1px solid var(--low);
+    height: fit-content;
+    transition: all 0.4s;
+    background-color: var(--fadegray)
+}
+.card img{
+    display: block;
+    margin: 0 auto;
+}
