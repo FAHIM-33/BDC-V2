@@ -1,11 +1,15 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../Providers/AuthProvider";
-import { useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 import Loading from "../../../Components/Loading";
 import Heading from "../../../Components/Heading";
 import useAddress from "../../../Hooks/useAddress";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import toast from "react-hot-toast";
+
+import DatePicker from "react-multi-date-picker";
+// import "react-multi-date-picker/styles/layouts/mobile.css"
+import Button from "react-multi-date-picker/components/button"
 
 
 const CreateRequest = () => {
@@ -14,6 +18,7 @@ const CreateRequest = () => {
     const { district, upazila } = useAddress()
     const [isActive, setIsActive] = useState('')
     const axiosSecure = useAxiosSecure()
+    const [dateValue, setDateValue] = useState()
 
     useEffect(() => {
         loading ||
@@ -31,16 +36,16 @@ const CreateRequest = () => {
         data.email = user?.email
         data.requestStatus = 'pending'
         console.log(data)
-        let toastID = toast.loading('Posting Your request...')
-        axiosSecure.post('/api/v1/create-donation-request', data)
-            .then(res => {
-                console.log(res)
-                toast.success('Posted Your request', { id: toastID })
-            })
-            .catch(err => {
-                console.log(err)
-                toast.error('Could not post', { id: toastID })
-            })
+        // let toastID = toast.loading('Posting Your request...')
+        // axiosSecure.post('/api/v1/create-donation-request', data)
+        //     .then(res => {
+        //         console.log(res)
+        //         toast.success('Posted Your request', { id: toastID })
+        //     })
+        //     .catch(err => {
+        //         console.log(err)
+        //         toast.error('Could not post', { id: toastID })
+        //     })
 
     }
 
@@ -48,22 +53,13 @@ const CreateRequest = () => {
         <section>
             <Heading>Request for blood donation</Heading>
 
-            <div> 
-                <p>{user?.displayName}</p>
-                <p>{user?.email}</p>
+            <div className="text-center bg-fadegray rounded-md">
+                <p className="text-xl text-mid">{user?.displayName}</p>
+                <p className="text-low">{user?.email}</p>
             </div>
 
             <form onSubmit={handleSubmit(onSubmit)} className=" m-4  p-4 border border-low rounded-lg">
                 <div className="grid gap-4 grid-cols-2">
-                    {/* <div className=''>
-                        <label >Requester:</label>
-                        <input defaultValue={user?.displayName} type="text" className="text-center text-xl font-semibold" disabled />
-                    </div>
-
-                    <div className=''>
-                        <label >Requester email:</label>
-                        <input defaultValue={user?.email} type="text" className="text-center text-xl font-semibold" disabled />
-                    </div> */}
 
                     <div className=''>
                         <label htmlFor="receipentName"
@@ -117,13 +113,40 @@ const CreateRequest = () => {
                 </div>
 
                 <div className="grid gap-4 grid-cols-2 md:mt-8 mt-4">
-                    <div className=''>
+
+                    {/* <div className=''>
                         <label htmlFor="date"
                             className=''
                         >Select Date:</label>
                         <br />
                         <input type="date" {...register("date", { required: true })} name="date" id="date" />
+                    </div> */}
+                    <div>
+                        <label htmlFor="date">Select date:</label>
+                        <br />
+                        <DatePicker
+                        format="D MMMM YYYY"
+                        className="rmdp-mobile w-full"
+                            id="date"
+                            name="date"
+                            value={dateValue}
+                            onChange={(value) => setDateValue(value)}
+                            // mobileLabels={{
+                            //     OK: "Accept",
+                            //     CANCEL: "Close",
+                            //   }}
+                              render={(value, openCalendar) => {
+                                return (
+                                  <Button 
+                                  className="input-similar w-full block"
+                                  onClick={openCalendar}>
+                                    {value}
+                                  </Button>
+                                )
+                              }}
+                        />
                     </div>
+
                     <div className=''>
                         <label htmlFor="time"
                             className=''

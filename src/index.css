@@ -138,7 +138,7 @@ label {
 }
 
 input,
-textarea {
+textarea, .input-similar {
     background-color: #8f8f8f2d;
     border-radius: 6px;
     width: 100%;
@@ -150,6 +150,10 @@ textarea {
 input:focus:not(.inModal),
 textarea:focus {
     outline: 2px solid var(--second);
+}
+
+.rmdp-container{
+    width: 100%;
 }
 
 table {
