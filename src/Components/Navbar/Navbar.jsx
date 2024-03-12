@@ -12,8 +12,8 @@ const Navbar = () => {
     const links = <>
         <NavLink to='/'><li>Home</li></NavLink>
         <NavLink to='/dashboard/home'><li>Dashboard</li></NavLink>
-        <NavLink to='/all-blogs'><li>Blog</li></NavLink>
-        <NavLink to='/donation-request'><li>Donation Request</li></NavLink>
+        {/* <NavLink to='/all-blogs'><li>Blog</li></NavLink>
+        <NavLink to='/donation-request'><li>Donation Request</li></NavLink> */}
     </>
 
     useEffect(() => {

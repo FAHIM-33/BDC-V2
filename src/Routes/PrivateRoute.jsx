@@ -1,13 +1,14 @@
 import { useContext } from "react";
 import { AuthContext } from "../Providers/AuthProvider";
 import { Navigate, useLocation } from "react-router-dom";
+import PulseLoading from "../Components/PulseLoading";
 
 const PrivateRoute = ({ children }) => {
     const { user, loading } = useContext(AuthContext)
     const location = useLocation()
 
 
-    if (loading) { return <p className="text-center text-7xl text-red-600  pt-48">Loading...</p> }
+    if (loading) { return <PulseLoading></PulseLoading> }
     if (!user?.email) {
         return <Navigate state={{ from: location.pathname }} replace to='/login'></Navigate>
     }

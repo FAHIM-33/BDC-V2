@@ -14,12 +14,12 @@ const Sidebar = () => {
 
     return (
         <section className='sticky top-0 left-0 sidebar w-max flex flex-col py-4 min-h-screen'>
-            <NavLink to='/dashboard/profile'>
+            {/* <NavLink to='/dashboard/profile'>
                 <button>
                     <img className='w-8 h-8 object-cover rounded-full' src={user?.photoURL} />
                     Profile ({user?.displayName})
                 </button>
-            </NavLink>
+            </NavLink> */}
             <NavLink to='/dashboard/home'>
                 <button>
                     <MdSpaceDashboard className='text-2xl'></MdSpaceDashboard>
@@ -35,11 +35,11 @@ const Sidebar = () => {
             <br />
 
             <br />
-            <NavLink to='/dashboard/my-donation-request'>
+            {/* <NavLink to='/dashboard/my-donation-request'>
                 <button>
                     <BiSolidDonateBlood className='text-2xl'></BiSolidDonateBlood>
                     My donation request</button>
-            </NavLink>
+            </NavLink> */}
             <br />
             <NavLink to='/'>
                 <button>

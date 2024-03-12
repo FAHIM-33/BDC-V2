@@ -15,7 +15,7 @@
 }
 
 :root[data-theme="dark"] {
-    --second: rgb(136, 255, 0);
+    --second: rgb(0, 153, 255);
     --low: rgb(120, 120, 120);
     --mid: rgb(190, 190, 190);
     --high: rgb(235, 235, 235);

@@ -47,16 +47,23 @@ const CreateRequest = () => {
     return (
         <section>
             <Heading>Request for blood donation</Heading>
+
+            <div> 
+                <p>{user?.displayName}</p>
+                <p>{user?.email}</p>
+            </div>
+
             <form onSubmit={handleSubmit(onSubmit)} className=" m-4  p-4 border border-low rounded-lg">
                 <div className="grid gap-4 grid-cols-2">
-                    <div className=''>
+                    {/* <div className=''>
                         <label >Requester:</label>
-                        <input defaultValue={user?.displayName} type="text" className="text-center text-xl font-semibold" readOnly />
+                        <input defaultValue={user?.displayName} type="text" className="text-center text-xl font-semibold" disabled />
                     </div>
+
                     <div className=''>
                         <label >Requester email:</label>
-                        <input defaultValue={user?.email} type="text" className="text-center text-xl font-semibold" readOnly />
-                    </div>
+                        <input defaultValue={user?.email} type="text" className="text-center text-xl font-semibold" disabled />
+                    </div> */}
 
                     <div className=''>
                         <label htmlFor="receipentName"
