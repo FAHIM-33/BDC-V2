@@ -1,0 +1,17 @@
+.custom-calendar.rmdp-wrapper,
+.rmdp-container .custom-calendar.ep-arrow::after {
+  box-shadow: none;
+  scale: 1.2;
+}
+
+
+.input-similar {
+  height: 55px;
+}
+
+.rmdp-input {
+  height: 55px !important;
+  border: none !important;
+  box-shadow: none !important;
+  text-align: center;
+}

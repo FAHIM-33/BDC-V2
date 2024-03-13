@@ -4,25 +4,25 @@
 @tailwind utilities;
 
 :root {
-    --primary: rgb(255, 0, 0); 
-    --second: rgb(30, 180, 0);
+    --primary: rgb(207, 0, 0);
+    --second: violet;
     --low: rgb(51, 51, 51);
     --mid: rgb(33, 33, 33);
     --high: rgb(18, 18, 18);
     --background: rgb(245, 245, 245);
     --fadegray: #8f8f8f2d;
-    color-scheme: light; 
+    color-scheme: light;
 }
 
 :root[data-theme="dark"] {
-    --second: rgb(0, 153, 255);
     --low: rgb(120, 120, 120);
     --mid: rgb(190, 190, 190);
     --high: rgb(235, 235, 235);
     --background: rgb(8, 8, 8);
     color-scheme: dark;
 }
-.test{
+
+.test {
     color: #17fa17;
 }
 
@@ -138,7 +138,8 @@ label {
 }
 
 input,
-textarea, .input-similar {
+textarea,
+.input-similar {
     background-color: #8f8f8f2d;
     border-radius: 6px;
     width: 100%;
@@ -149,10 +150,10 @@ textarea, .input-similar {
 
 input:focus:not(.inModal),
 textarea:focus {
-    outline: 2px solid var(--second);
+    outline: 1px solid var(--second);
 }
 
-.rmdp-container{
+.rmdp-container {
     width: 100%;
 }
 
@@ -165,7 +166,8 @@ tr {
     border: 1px solid var(--fadegray);
     padding: 0 2px;
 }
-th{
+
+th {
     padding: 0.5rem;
 }
 
@@ -174,18 +176,19 @@ th{
     color: var(--low);
 }
 
-.swal2-modal{
+.swal2-modal {
     background-color: var(--background);
     border: 2px solid var(--low);
     color: var(--high);
 }
 
-.selectedPage{
+.selectedPage {
     background-color: var(--primary);
     padding: 0.5rem;
     border-radius: 5px;
 }
-.pagination-container button{
+
+.pagination-container button {
     padding: 0.5rem;
 }
 

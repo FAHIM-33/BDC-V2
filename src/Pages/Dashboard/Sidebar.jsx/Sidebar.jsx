@@ -35,11 +35,11 @@ const Sidebar = () => {
             <br />
 
             <br />
-            {/* <NavLink to='/dashboard/my-donation-request'>
+            <NavLink to='/dashboard/my-donation-request'>
                 <button>
                     <BiSolidDonateBlood className='text-2xl'></BiSolidDonateBlood>
                     My donation request</button>
-            </NavLink> */}
+            </NavLink>
             <br />
             <NavLink to='/'>
                 <button>

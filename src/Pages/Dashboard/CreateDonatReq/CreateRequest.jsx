@@ -1,15 +1,14 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../Providers/AuthProvider";
-import { useForm, Controller } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import Loading from "../../../Components/Loading";
 import Heading from "../../../Components/Heading";
 import useAddress from "../../../Hooks/useAddress";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import toast from "react-hot-toast";
+import Calender from "../../../Components/Calender/Calender";
+import Timepicker from "../../../Components/TimePicker/Timepicker";
 
-import DatePicker from "react-multi-date-picker";
-// import "react-multi-date-picker/styles/layouts/mobile.css"
-import Button from "react-multi-date-picker/components/button"
 
 
 const CreateRequest = () => {
@@ -19,6 +18,7 @@ const CreateRequest = () => {
     const [isActive, setIsActive] = useState('')
     const axiosSecure = useAxiosSecure()
     const [dateValue, setDateValue] = useState()
+    const [time, setTime] = useState()
 
     useEffect(() => {
         loading ||
@@ -35,17 +35,19 @@ const CreateRequest = () => {
         data.name = user?.displayName
         data.email = user?.email
         data.requestStatus = 'pending'
+        data.date = dateValue
+        data.time = dateValue
         console.log(data)
-        // let toastID = toast.loading('Posting Your request...')
-        // axiosSecure.post('/api/v1/create-donation-request', data)
-        //     .then(res => {
-        //         console.log(res)
-        //         toast.success('Posted Your request', { id: toastID })
-        //     })
-        //     .catch(err => {
-        //         console.log(err)
-        //         toast.error('Could not post', { id: toastID })
-        //     })
+        let toastID = toast.loading('Posting Your request...')
+        axiosSecure.post('/api/v1/create-donation-request', data)
+            .then(res => {
+                console.log(res)
+                toast.success('Posted Your request', { id: toastID })
+            })
+            .catch(err => {
+                console.log(err)
+                toast.error('Could not post', { id: toastID })
+            })
 
     }
 
@@ -113,46 +115,19 @@ const CreateRequest = () => {
                 </div>
 
                 <div className="grid gap-4 grid-cols-2 md:mt-8 mt-4">
-
-                    {/* <div className=''>
-                        <label htmlFor="date"
-                            className=''
-                        >Select Date:</label>
-                        <br />
-                        <input type="date" {...register("date", { required: true })} name="date" id="date" />
-                    </div> */}
-                    <div>
+                    <div className="">
                         <label htmlFor="date">Select date:</label>
                         <br />
-                        <DatePicker
-                        format="D MMMM YYYY"
-                        className="rmdp-mobile w-full"
-                            id="date"
-                            name="date"
-                            value={dateValue}
-                            onChange={(value) => setDateValue(value)}
-                            // mobileLabels={{
-                            //     OK: "Accept",
-                            //     CANCEL: "Close",
-                            //   }}
-                              render={(value, openCalendar) => {
-                                return (
-                                  <Button 
-                                  className="input-similar w-full block"
-                                  onClick={openCalendar}>
-                                    {value}
-                                  </Button>
-                                )
-                              }}
+                        <Calender
+                            dateValue={dateValue}
+                            setDateValue={setDateValue}
                         />
                     </div>
 
-                    <div className=''>
-                        <label htmlFor="time"
-                            className=''
-                        >Select time:</label>
+                    <div>
+                        <label htmlFor="date">Select Time:</label>
                         <br />
-                        <input type="time" {...register("time", { required: true })} name="time" id="time" />
+                        <Timepicker time={time} setTime={setTime} />
                     </div>
 
                 </div>
@@ -161,7 +136,7 @@ const CreateRequest = () => {
                     <textarea rows={5} placeholder="Tell us details about your request" {...register("message", { required: true })} name="message" id="message"></textarea>
                 </div>
 
-                <button type="submit" className="btn py-3 bg-sec text-black rounded-md w-3/5 mx-auto block text-xl font-semibold mt-8">
+                <button type="submit" className="btn py-3 bg-prim text-white rounded-md w-3/5 mx-auto block text-xl font-semibold mt-8">
                     Request Donation
                 </button>
 
